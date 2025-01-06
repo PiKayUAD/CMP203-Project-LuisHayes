@@ -1,0 +1,785 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\Microsoft.Direct3D.DXC.1.8.2407.12\build\native\Microsoft.Direct3D.DXC.props" Condition="Exists('..\..\packages\Microsoft.Direct3D.DXC.1.8.2407.12\build\native\Microsoft.Direct3D.DXC.props')" />
+  <Import Project="..\..\packages\Microsoft.Direct3D.D3D12.1.614.1\build\native\Microsoft.Direct3D.D3D12.props" Condition="Exists('..\..\packages\Microsoft.Direct3D.D3D12.1.614.1\build\native\Microsoft.Direct3D.D3D12.props')" />
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Prospero">
+      <Configuration>Debug</Configuration>
+      <Platform>Prospero</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Prospero">
+      <Configuration>Release</Configuration>
+      <Platform>Prospero</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Ship|Prospero">
+      <Configuration>Ship</Configuration>
+      <Platform>Prospero</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Ship|x64">
+      <Configuration>Ship</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C54B388E-B103-7ADB-1A0B-533706E214CC}</ProjectGuid>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Skateboard</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <PropertyGroup Label="Globals" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Microsoft_Direct3D_D3D12_D3D12SDKPath>..\packages\</Microsoft_Direct3D_D3D12_D3D12SDKPath>
+    <Microsoft_Direct3D_D3D12_SkipLibraryCopy>false</Microsoft_Direct3D_D3D12_SkipLibraryCopy>
+    <Microsoft_Direct3D_D3D12_SkipDebugLayerCopy>false</Microsoft_Direct3D_D3D12_SkipDebugLayerCopy>
+    <Microsoft_Direct3D_D3D12_SkipIncludeDir>false</Microsoft_Direct3D_D3D12_SkipIncludeDir>
+  </PropertyGroup>
+  <PropertyGroup Label="Globals" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Microsoft_Direct3D_D3D12_D3D12SDKPath>..\packages\</Microsoft_Direct3D_D3D12_D3D12SDKPath>
+    <Microsoft_Direct3D_D3D12_SkipLibraryCopy>false</Microsoft_Direct3D_D3D12_SkipLibraryCopy>
+    <Microsoft_Direct3D_D3D12_SkipDebugLayerCopy>false</Microsoft_Direct3D_D3D12_SkipDebugLayerCopy>
+    <Microsoft_Direct3D_D3D12_SkipIncludeDir>false</Microsoft_Direct3D_D3D12_SkipIncludeDir>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Ship|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">
+    <PlatformToolset>Clang</PlatformToolset>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">
+    <PlatformToolset>Clang</PlatformToolset>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">
+    <PlatformToolset>Clang</PlatformToolset>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\Skateboard\</OutDir>
+    <IntDir>$(SolutionDir)intermediate\$(Configuration)-$(Platform)\Skateboard\</IntDir>
+    <TargetName>Skateboard</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\Skateboard\</OutDir>
+    <IntDir>$(SolutionDir)intermediate\$(Configuration)-$(Platform)\Skateboard\</IntDir>
+    <TargetName>Skateboard</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">
+    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\Skateboard\</OutDir>
+    <IntDir>$(SolutionDir)intermediate\$(Configuration)-$(Platform)\Skateboard\</IntDir>
+    <TargetName>Skateboard</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">
+    <TargetExt>.a</TargetExt>
+    <OutDir>..\bin\Debug-playstation-Prospero\Skateboard\</OutDir>
+    <IntDir>..\intermediate\Debug-playstation-Prospero\Skateboard\</IntDir>
+    <ExecutablePath>$(SCE_PROSPERO_SDK_DIR)\host_tools\bin;(PATH);</ExecutablePath>
+    <IncludePath>$(SCE_PROSPERO_SDK_DIR)\host_tools\lib\clang\include;$(SCE_PROSPERO_SDK_DIR)\host_tools\edge\include;$(SCE_PROSPERO_SDK_DIR)\target\include;$(SCE_PROSPERO_SDK_DIR)\target\include_common</IncludePath>
+    <SourcePath>$(SCE_PROSPERO_SDK_DIR)\host_tools\edge\src\edge\libedgeanimtool;$(SourcePath)</SourcePath>
+    <LibraryPath>$(SCE_PROSPERO_SDK_DIR)\host_tools\lib;</LibraryPath>
+    <UndefinedBehavior>Recover</UndefinedBehavior>
+    <AddressSanitizer>Recover</AddressSanitizer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">
+    <TargetExt>.a</TargetExt>
+    <OutDir>..\bin\Release-playstation-Prospero\Skateboard\</OutDir>
+    <IntDir>..\intermediate\Release-playstation-Prospero\Skateboard\</IntDir>
+    <LibraryPath>$(SCE_PROSPERO_SDK_DIR)\host_tools\lib;</LibraryPath>
+    <SourcePath>$(SCE_PROSPERO_SDK_DIR)\host_tools\edge\src\edge\libedgeanimtool;$(SourcePath)</SourcePath>
+    <IncludePath>$(SCE_PROSPERO_SDK_DIR)\host_tools\lib\clang\include;$(SCE_PROSPERO_SDK_DIR)\host_tools\edge\include;$(SCE_PROSPERO_SDK_DIR)\target\include;$(SCE_PROSPERO_SDK_DIR)\target\include_common</IncludePath>
+    <ExecutablePath>$(SCE_PROSPERO_SDK_DIR)\host_tools\bin;(PATH);</ExecutablePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">
+    <TargetExt>.a</TargetExt>
+    <OutDir>..\bin\Ship-playstation-Prospero\Skateboard\</OutDir>
+    <IntDir>..\intermediate\Ship-playstation-Prospero\Skateboard\</IntDir>
+    <IncludePath>$(SCE_PROSPERO_SDK_DIR)\host_tools\lib\clang\include;$(SCE_PROSPERO_SDK_DIR)\host_tools\edge\include;$(SCE_PROSPERO_SDK_DIR)\target\include;$(SCE_PROSPERO_SDK_DIR)\target\include_common</IncludePath>
+    <LibraryPath>$(SCE_PROSPERO_SDK_DIR)\host_tools\lib;</LibraryPath>
+    <SourcePath>$(SCE_PROSPERO_SDK_DIR)\host_tools\edge\src\edge\libedgeanimtool;$(SourcePath)</SourcePath>
+    <ExecutablePath>$(SCE_PROSPERO_SDK_DIR)\host_tools\bin;(PATH);</ExecutablePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>sktbdpch.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <DisableSpecificWarnings>4006;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <PreprocessorDefinitions>SKTBD_PLATFORM_WINDOWS;SKTBD_API_D3D12; SKTBD_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor;vendor\spdlog\include;vendor\simdjson;vendor\glm;vendor\entt\include;vendor\Jolt;vendor\Box2D\include;vendor\frankluna;vendor\Platform\Windows\fastgltf\include;vendor\Platform\Windows\DirectX12\D3D12MemoryAllocator\include;vendor\Platform\Windows\DirectX12\microsoft;vendor\Jolt;vendor\Box2D\include</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Lib>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <PostBuildEvent>
+      <Command>xcopy /Q /Y /I "$(GameInputNativeBuildDirectory)lib\x64" "$(SolutionDir)GameApp\libraries"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>sktbdpch.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <DisableSpecificWarnings>4006;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <PreprocessorDefinitions>SKTBD_PLATFORM_WINDOWS; SKTBD_API_DX12; SKTBD_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor;vendor\spdlog\include;vendor\simdjson;vendor\glm;vendor\entt\include;vendor\Jolt;vendor\Box2D\include;vendor\frankluna;vendor\Platform\Windows\fastgltf\include;vendor\Platform\Windows\DirectX12\D3D12MemoryAllocator\include;vendor\Platform\Windows\DirectX12\microsoft;</AdditionalIncludeDirectories>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>sktbdpch.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <DisableSpecificWarnings>4006;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <PreprocessorDefinitions>SKTBD_PLATFORM_WINDOWS;SKTBD_SHIP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor;vendor\spdlog\include;vendor\simdjson;vendor\glm;vendor\entt\include;vendor\Jolt;vendor\Box2D\include;vendor\frankluna;vendor\Platform\Windows\fastgltf\include;vendor\Platform\Windows\DirectX12\D3D12MemoryAllocator\include;vendor\Platform\Windows\DirectX12\microsoft;</AdditionalIncludeDirectories>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalIncludeDirectories>src;vendor;vendor\spdlog\include;vendor\simdjson;vendor\glm;vendor\entt\include;vendor\frankluna;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SKTBD_PLATFORM_PLAYSTATION;SKTBD_DEBUG;</PreprocessorDefinitions>
+      <CppLanguageStd>Cpp20</CppLanguageStd>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>$(IntDir)imgui_impl_ps_shader_p.o;$(IntDir)imgui_impl_ps_shader_vv.o;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+    <PreLinkEvent>
+      <Command>CompileEnginePlaystationShaders.cmd $(ProjectDir).. $(IntDir)</Command>
+    </PreLinkEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>src;vendor;vendor\spdlog\include;vendor\simdjson;vendor\glm;vendor\entt\include;vendor\frankluna;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SKTBD_PLATFORM_PLAYSTATION;SKTBD_RELEASE;</PreprocessorDefinitions>
+      <CppLanguageStd>Cpp17</CppLanguageStd>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <PreLinkEvent>
+      <Command>CompileEnginePlaystationShaders.cmd $(ProjectDir).. $(IntDir)</Command>
+    </PreLinkEvent>
+    <Lib>
+      <AdditionalDependencies>$(IntDir)imgui_impl_ps_shader_p.o;$(IntDir)imgui_impl_ps_shader_vv.o;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+    <WavePsslc>
+      <OutputFileName>$(SolutionDir)bin\Release-playstation-Prospero\GameApp\%(FileName).ags</OutputFileName>
+    </WavePsslc>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>src;vendor;vendor\spdlog\include;vendor\simdjson;vendor\glm;vendor\entt\include;vendor\frankluna;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SKTBD_PLATFORM_PLAYSTATION;SKTBD_SHIP;</PreprocessorDefinitions>
+      <CppLanguageStd>Cpp17</CppLanguageStd>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>CompileEnginePlaystationShaders.cmd $(SolutionDir) $(IntDir)</Command>
+    </PostBuildEvent>
+    <PreLinkEvent>
+      <Command>CompileEnginePlaystationShaders.cmd $(ProjectDir).. $(IntDir)</Command>
+    </PreLinkEvent>
+    <Lib>
+      <AdditionalDependencies>$(IntDir)imgui_impl_ps_shader_p.o;$(IntDir)imgui_impl_ps_shader_vv.o;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Platform\DirectX12\ApiHandles.h" />
+    <ClInclude Include="src\Platform\DirectX12\D3DDebugTools.h" />
+    <ClInclude Include="src\Platform\DirectX12\D3DTypes.h" />
+    <ClInclude Include="src\Platform\DirectX12\MeshletPipeline\D3DMeshletPipeline.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Platform\DirectX12\TimeManager\D3DTimeManager.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsDeviceManager.h" />
+    <ClInclude Include="src\Skateboard\ComponentSystems\Components\PhysicsBodyComponent.h" />
+    <ClInclude Include="src\Skateboard\ComponentSystems\Components\SpriteAnimComponent.h" />
+    <ClInclude Include="src\Skateboard\ComponentSystems\Scripts\PlayerControllerScript.h" />
+    <ClInclude Include="src\Skateboard\ComponentSystems\Systems\BaseSystem.h" />
+    <ClInclude Include="src\Skateboard\ComponentSystems\Systems\CameraSystem.h" />
+    <ClInclude Include="src\Skateboard\ComponentSystems\Systems\PhysicsSystem.h" />
+    <ClInclude Include="src\Skateboard\ComponentSystems\Systems\SpriteAnimatorSystem.h" />
+    <ClInclude Include="src\Skateboard\Input\TriggerEffectData.h" />
+    <ClInclude Include="src\Skateboard\Memory\VirtualAllocator.h" />
+    <ClInclude Include="src\Platform\Playstation\PlaystationDeviceManager.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Playstation\PlaystationUserManager.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsUserManager.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Skateboard\Input.h" />
+    <ClInclude Include="src\Skateboard\Input\ActionBinding.h" />
+    <ClInclude Include="src\Skateboard\Input\DeviceManager.h" />
+    <ClInclude Include="src\Skateboard\Renderer\CommonResources.h" />
+    <ClInclude Include="src\Skateboard\Renderer\ResourceFactory.h" />
+    <ClInclude Include="src\Skateboard\Renderer\GPUResource.h" />
+    <ClInclude Include="src\Skateboard\Renderer\GraphicsSettingsDefines.h" />
+    <ClInclude Include="src\Skateboard\Renderer\SpriteComponent.h" />
+    <ClInclude Include="src\Skateboard\Renderer\Renderer2D.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Skateboard\Renderer\Renderer3D.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Platform\AGC\Model\helper code\libScePackParser\array.h" />
+    <ClInclude Include="src\Platform\AGC\Model\helper code\libScePackParser\error_codes.h" />
+    <ClInclude Include="src\Platform\AGC\Model\helper code\libScePackParser\material_models.h" />
+    <ClInclude Include="src\Platform\AGC\Model\helper code\libScePackParser\pack_file.h" />
+    <ClInclude Include="src\Platform\DirectX12\Api\D3DRenderingApi.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Platform\DirectX12\Assets\D3DAssetManager.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Platform\DirectX12\D3D.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Platform\DirectX12\D3DBuffer.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Platform\DirectX12\D3DGraphicsContext.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Platform\DirectX12\D3DPipeline.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Platform\DirectX12\Memory\D3DDescriptorHeap.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Platform\DirectX12\Memory\D3DDescriptorTable.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Platform\DirectX12\ShaderTable.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Playstation\PlaystationPlatform.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsPlatform.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Skateboard.h" />
+    <ClInclude Include="src\Skateboard\Application.h" />
+    <ClInclude Include="src\Skateboard\Assets\AssetManager.h" />
+    <ClInclude Include="src\Skateboard\Audio\Api\AudioRendererAPI.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Skateboard\Audio\AudioFile.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Skateboard\Audio\AudioRenderCommand.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Skateboard\Audio\AudioRenderer.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Skateboard\Audio\Platforms\Playstation\AudioStream.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Skateboard\Audio\Platforms\Playstation\PlaystationAudioInstance.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Skateboard\Audio\Platforms\Playstation\PlaystationAudioRendererAPI.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Skateboard\Audio\Platforms\Playstation\WavReaderUtility.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Skateboard\Camera\Camera.h" />
+    <ClInclude Include="src\Skateboard\Camera\CameraController.h" />
+    <ClInclude Include="src\Skateboard\Core.h" />
+    <ClInclude Include="src\Skateboard\EntryPoint.h" />
+    <ClInclude Include="src\Skateboard\Events\AppEvents.h" />
+    <ClInclude Include="src\Skateboard\Events\Event.h" />
+    <ClInclude Include="src\Skateboard\Events\GamePadEvent.h" />
+    <ClInclude Include="src\Skateboard\Events\KeyEvent.h" />
+    <ClInclude Include="src\Skateboard\Events\MouseEvent.h" />
+    <ClInclude Include="src\Skateboard\ImGui\backends\Playstation\imgui.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Skateboard\ImGui\backends\Playstation\imgui_impl_ps.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Skateboard\ImGui\backends\Playstation\imgui_impl_ps_shader_common.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Skateboard\ImGui\backends\Playstation\imgui_libfont_ps.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Skateboard\ImGui\backends\Windows\imgui_impl_dx12.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Skateboard\ImGui\backends\Windows\imgui_impl_win32.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\Skateboard\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Skateboard\Layer.h" />
+    <ClInclude Include="src\Skateboard\LayerStack.h" />
+    <ClInclude Include="src\Skateboard\Log.h" />
+    <ClInclude Include="src\Skateboard\Mathematics.h" />
+    <ClInclude Include="src\Skateboard\Memory\DescriptorTable.h" />
+    <ClInclude Include="src\Skateboard\Memory\MemoryManager.h" />
+    <ClInclude Include="src\Skateboard\Platform.h" />
+    <ClInclude Include="src\Skateboard\Renderer\Animation\Animator2D\Animator2D.h" />
+    <ClInclude Include="src\Skateboard\Renderer\Animation\Animation.h" />
+    <ClInclude Include="src\Skateboard\Renderer\Animation\Animator\Animator.h" />
+    <ClInclude Include="src\Skateboard\Renderer\Animation\SkeletalData\SkeletalData.h" />
+    <ClInclude Include="src\Skateboard\Renderer\Api\RenderingApi.h" />
+    <ClInclude Include="src\Skateboard\Renderer\Buffer.h" />
+    <ClInclude Include="src\Skateboard\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Skateboard\Renderer\InternalFormats.h" />
+    <ClInclude Include="src\Skateboard\Renderer\Lights\Light.h" />
+    <ClInclude Include="src\Skateboard\Renderer\Materials\Material.h" />
+    <ClInclude Include="src\Skateboard\Renderer\MeshletEngine\MeshEngine.h" />
+    <ClInclude Include="src\Skateboard\Renderer\Model\Model.h" />
+    <ClInclude Include="src\Skateboard\Renderer\Model\Span.h" />
+    <ClInclude Include="src\Skateboard\Renderer\Pipeline.h" />
+    <ClInclude Include="src\Skateboard\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Skateboard\Renderer\RenderInstruction.h" />
+    <ClInclude Include="src\Skateboard\Renderer\Renderer.h" />
+    <ClInclude Include="src\Skateboard\Renderer\View.h" />
+    <ClInclude Include="src\Skateboard\Scene\AABB.h" />
+    <ClInclude Include="src\Skateboard\Scene\Components.h" />
+    <ClInclude Include="src\Skateboard\Scene\ECS.h" />
+    <ClInclude Include="src\Skateboard\Scene\Entity.h" />
+    <ClInclude Include="src\Skateboard\Scene\InstanceData.h" />
+    <ClInclude Include="src\Skateboard\Scene\Scene.h" />
+    <ClInclude Include="src\Skateboard\Scene\SceneBuilder.h" />
+    <ClInclude Include="src\Skateboard\Scene\PipelineMap.h" />
+    <ClInclude Include="src\Skateboard\Scene\BaseNativeScript.h" />
+    <ClInclude Include="src\Skateboard\SizedPtr.h" />
+    <ClInclude Include="src\Skateboard\User.h" />
+    <ClInclude Include="src\Skateboard\Utilities\CRC.h" />
+    <ClInclude Include="src\Skateboard\Utilities\StringConverters.h" />
+    <ClInclude Include="src\Skateboard\Utilities\StringId.h" />
+    <ClInclude Include="src\sktbdpch.h" />
+    <ClInclude Include="src\Skateboard\Time\TimeManager.h" />
+    <ClInclude Include="src\Platform\DirectX12\Memory\UploadManager.h" />
+    <ClInclude Include="vendor\frankluna\Timer.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="vendor\Platform\Windows\DirectX12\D3D12MemoryAllocator\include\D3D12MemAlloc.h" />
+    <ClInclude Include="vendor\Platform\Windows\DirectX12\microsoft\DDS.h" />
+    <ClInclude Include="vendor\Platform\Windows\DirectX12\microsoft\DDSTextureLoader.h" />
+    <ClInclude Include="vendor\Platform\Windows\DirectX12\microsoft\DirectXHelpers.h" />
+    <ClInclude Include="vendor\Platform\Windows\DirectX12\microsoft\GraphicsMemory.h" />
+    <ClInclude Include="vendor\Platform\Windows\DirectX12\microsoft\LinearAllocator.h" />
+    <ClInclude Include="vendor\Platform\Windows\DirectX12\microsoft\LoaderHelpers.h" />
+    <ClInclude Include="vendor\Platform\Windows\DirectX12\microsoft\PlatformHelpers.h" />
+    <ClInclude Include="vendor\Platform\Windows\DirectX12\microsoft\ResourceUploadBatch.h" />
+    <ClInclude Include="vendor\Platform\Windows\fastgltf\include\fastgltf\base64.hpp" />
+    <ClInclude Include="vendor\Platform\Windows\fastgltf\include\fastgltf\core.hpp" />
+    <ClInclude Include="vendor\Platform\Windows\fastgltf\include\fastgltf\dxmath_element_traits.hpp" />
+    <ClInclude Include="vendor\Platform\Windows\fastgltf\include\fastgltf\glm_element_traits.hpp" />
+    <ClInclude Include="vendor\Platform\Windows\fastgltf\include\fastgltf\math.hpp" />
+    <ClInclude Include="vendor\Platform\Windows\fastgltf\include\fastgltf\tools.hpp" />
+    <ClInclude Include="vendor\Platform\Windows\fastgltf\include\fastgltf\types.hpp" />
+    <ClInclude Include="vendor\Platform\Windows\fastgltf\include\fastgltf\util.hpp" />
+    <ClInclude Include="vendor\simdjson\simdjson.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Platform\DirectX12\D3DDebugTools.cpp" />
+    <ClCompile Include="src\Platform\DirectX12\D3DTypes.cpp" />
+    <ClCompile Include="src\Platform\DirectX12\MeshletPipeline\D3DMeshletPipeline.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Platform\DirectX12\TimeManager\D3DTimeManager.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsDeviceManager.cpp" />
+    <ClCompile Include="src\Skateboard\ComponentSystems\Components\PhysicsBodyComponent.cpp" />
+    <ClCompile Include="src\Skateboard\ComponentSystems\Components\SpriteAnimComponent.cpp" />
+    <ClCompile Include="src\Skateboard\ComponentSystems\Scripts\PlayerControllerScript.cpp" />
+    <ClCompile Include="src\Skateboard\ComponentSystems\Systems\CameraSystem.cpp" />
+    <ClCompile Include="src\Skateboard\ComponentSystems\Systems\PhysicsSystem.cpp" />
+    <ClCompile Include="src\Skateboard\ComponentSystems\Systems\SpriteAnimatorSystem.cpp" />
+    <ClCompile Include="src\Skateboard\Memory\VirtualAllocator.cpp" />
+    <ClCompile Include="src\Platform\Playstation\PlaystationDeviceManager.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Playstation\PlaystationUserManager.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsUserManager.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Skateboard\Input.cpp" />
+    <ClCompile Include="src\Skateboard\Input\ActionBinding.cpp" />
+    <ClCompile Include="src\Skateboard\Renderer\GraphicsContext.cpp" />
+    <ClCompile Include="src\Skateboard\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Skateboard\Renderer\SpriteComponent.cpp" />
+    <ClCompile Include="src\Skateboard\Renderer\Renderer2D.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Skateboard\Renderer\Renderer3D.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Platform\DirectX12\Api\D3DRenderingApi.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Platform\DirectX12\Assets\D3DAssetManager.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Platform\DirectX12\D3DBuffer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Platform\DirectX12\D3DGraphicsContext.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Platform\DirectX12\D3DPipeline.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Platform\DirectX12\Memory\D3DDescriptorHeap.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Platform\DirectX12\Memory\D3DDescriptorTable.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Playstation\PlaystationPlatform.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsPlatform.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Skateboard\Application.cpp" />
+    <ClCompile Include="src\Skateboard\Assets\AssetManager.cpp" />
+    <ClCompile Include="src\Skateboard\Audio\Api\AudioRendererAPI.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Skateboard\Audio\AudioFile.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Skateboard\Audio\AudioRenderCommand.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Skateboard\Audio\AudioRenderer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Skateboard\Audio\Platforms\Playstation\AudioStream.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Skateboard\Audio\Platforms\Playstation\PlaystationAudioInstance.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Skateboard\Audio\Platforms\Playstation\PlaystationAudioRendererAPI.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Skateboard\Audio\Platforms\Playstation\WavReaderUtility.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\Skateboard\Camera\Camera.cpp" />
+    <ClCompile Include="src\Skateboard\Camera\CameraController.cpp" />
+    <ClCompile Include="src\Skateboard\ImGui\ImGuiBuild.cpp" />
+    <ClCompile Include="src\Skateboard\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="src\Skateboard\LayerStack.cpp" />
+    <ClCompile Include="src\Skateboard\Log.cpp" />
+    <ClCompile Include="src\Skateboard\Memory\DescriptorTable.cpp" />
+    <ClCompile Include="src\Skateboard\Memory\MemoryManager.cpp" />
+    <ClCompile Include="src\Skateboard\Platform.cpp" />
+    <ClCompile Include="src\Skateboard\Renderer\Animation\Animation.cpp" />
+    <ClCompile Include="src\Skateboard\Renderer\Animation\Animator\Animator.cpp" />
+    <ClCompile Include="src\Skateboard\Renderer\Animation\SkeletalData\SkeletalData.cpp" />
+    <ClCompile Include="src\Skateboard\Renderer\Api\RenderingApi.cpp" />
+    <ClCompile Include="src\Skateboard\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Skateboard\Renderer\InternalFormats.cpp" />
+    <ClCompile Include="src\Skateboard\Renderer\Lights\Light.cpp" />
+    <ClCompile Include="src\Skateboard\Renderer\Materials\Material.cpp" />
+    <ClCompile Include="src\Skateboard\Renderer\MeshletEngine\MeshEngine.cpp" />
+    <ClCompile Include="src\Skateboard\Renderer\Model\Model.cpp" />
+    <ClCompile Include="src\Skateboard\Renderer\Pipeline.cpp" />
+    <ClCompile Include="src\Skateboard\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Skateboard\Scene\Components.cpp" />
+    <ClCompile Include="src\Skateboard\Scene\ECS.cpp" />
+    <ClCompile Include="src\Skateboard\Scene\Entity.cpp" />
+    <ClCompile Include="src\Skateboard\Scene\InstanceData.cpp" />
+    <ClCompile Include="src\Skateboard\Scene\Scene.cpp" />
+    <ClCompile Include="src\Skateboard\Scene\SceneBuilder.cpp" />
+    <ClCompile Include="src\Skateboard\Scene\PipelineMap.cpp" />
+    <ClCompile Include="src\Skateboard\User.cpp" />
+    <ClCompile Include="src\Skateboard\Utilities\CRC.cpp" />
+    <ClCompile Include="src\Skateboard\Utilities\StringId.cpp" />
+    <ClCompile Include="src\sktbdpch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\Skateboard\Time\TimeManager.cpp" />
+    <ClCompile Include="src\Platform\DirectX12\Memory\UploadManager.cpp" />
+    <ClCompile Include="vendor\frankluna\Timer.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="vendor\Platform\Windows\DirectX12\D3D12MemoryAllocator\src\D3D12MemAlloc.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="vendor\Platform\Windows\DirectX12\microsoft\DDSTextureLoader.cpp" />
+    <ClCompile Include="vendor\Platform\Windows\DirectX12\microsoft\DirectXHelpers.cpp" />
+    <ClCompile Include="vendor\Platform\Windows\DirectX12\microsoft\GraphicsMemory.cpp" />
+    <ClCompile Include="vendor\Platform\Windows\DirectX12\microsoft\LinearAllocator.cpp" />
+    <ClCompile Include="vendor\Platform\Windows\DirectX12\microsoft\ResourceUploadBatch.cpp" />
+    <ClCompile Include="vendor\Platform\Windows\fastgltf\src\base64.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="vendor\Platform\Windows\fastgltf\src\fastgltf.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="vendor\Platform\Windows\fastgltf\src\io.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="vendor\simdjson\simdjson.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="src\Skateboard\ImGui\ImGui.vcxproj">
+      <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\Box2D\Box2D.vcxproj">
+      <Project>{f97f5bb5-578e-4e0b-b0b0-6e98555baac1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\Jolt\Jolt.vcxproj">
+      <Project>{6a3a7aed-8edf-4960-bcda-d367bdcb4390}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WavePsslc Include="src\Skateboard\ImGui\backends\Playstation\imgui_impl_ps_shader_p.pssl">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">Od</Optimization>
+    </WavePsslc>
+    <WavePsslc Include="src\Skateboard\ImGui\backends\Playstation\imgui_impl_ps_shader_vv.pssl">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">Od</Optimization>
+    </WavePsslc>
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="vendor\Platform\Windows\DirectX12\D3D12MemoryAllocator\src\D3D12MemAlloc.natvis" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\..\packages\Microsoft.Direct3D.D3D12.1.614.1\build\native\Microsoft.Direct3D.D3D12.targets" Condition="Exists('..\..\packages\Microsoft.Direct3D.D3D12.1.614.1\build\native\Microsoft.Direct3D.D3D12.targets')" />
+    <Import Project="..\..\packages\WinPixEventRuntime.1.0.240308001\build\WinPixEventRuntime.targets" Condition="Exists('..\..\packages\WinPixEventRuntime.1.0.240308001\build\WinPixEventRuntime.targets')" />
+    <Import Project="..\..\packages\Microsoft.GameInput.0.2303.22621.3038\build\native\targets\Microsoft.GameInput.targets" Condition="Exists('..\..\packages\Microsoft.GameInput.0.2303.22621.3038\build\native\targets\Microsoft.GameInput.targets')" />
+    <Import Project="..\..\packages\Microsoft.Direct3D.DXC.1.8.2407.12\build\native\Microsoft.Direct3D.DXC.targets" Condition="Exists('..\..\packages\Microsoft.Direct3D.DXC.1.8.2407.12\build\native\Microsoft.Direct3D.DXC.targets')" />
+  </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Microsoft.Direct3D.D3D12.1.614.1\build\native\Microsoft.Direct3D.D3D12.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Direct3D.D3D12.1.614.1\build\native\Microsoft.Direct3D.D3D12.props'))" />
+    <Error Condition="!Exists('..\..\packages\Microsoft.Direct3D.D3D12.1.614.1\build\native\Microsoft.Direct3D.D3D12.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Direct3D.D3D12.1.614.1\build\native\Microsoft.Direct3D.D3D12.targets'))" />
+    <Error Condition="!Exists('..\..\packages\WinPixEventRuntime.1.0.240308001\build\WinPixEventRuntime.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\WinPixEventRuntime.1.0.240308001\build\WinPixEventRuntime.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Microsoft.GameInput.0.2303.22621.3038\build\native\targets\Microsoft.GameInput.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.GameInput.0.2303.22621.3038\build\native\targets\Microsoft.GameInput.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Microsoft.Direct3D.DXC.1.8.2407.12\build\native\Microsoft.Direct3D.DXC.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Direct3D.DXC.1.8.2407.12\build\native\Microsoft.Direct3D.DXC.props'))" />
+    <Error Condition="!Exists('..\..\packages\Microsoft.Direct3D.DXC.1.8.2407.12\build\native\Microsoft.Direct3D.DXC.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Direct3D.DXC.1.8.2407.12\build\native\Microsoft.Direct3D.DXC.targets'))" />
+  </Target>
+</Project>

@@ -1,0 +1,2 @@
+# Unignore .obj stored here. These are not Visual Studio objs but model files.
+!*.obj

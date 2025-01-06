@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Direct3D.D3D12.1.614.1\build\native\Microsoft.Direct3D.D3D12.props" Condition="Exists('..\packages\Microsoft.Direct3D.D3D12.1.614.1\build\native\Microsoft.Direct3D.D3D12.props')" />
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Prospero">
+      <Configuration>Debug</Configuration>
+      <Platform>Prospero</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Prospero">
+      <Configuration>Release</Configuration>
+      <Platform>Prospero</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Ship|Prospero">
+      <Configuration>Ship</Configuration>
+      <Platform>Prospero</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Ship|x64">
+      <Configuration>Ship</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{80D05747-ECAF-D6E2-F5C7-61B961263D44}</ProjectGuid>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>GameApp</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <PropertyGroup Label="Globals" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Microsoft_Direct3D_D3D12_D3D12SDKPath>..\packages</Microsoft_Direct3D_D3D12_D3D12SDKPath>
+    <Microsoft_Direct3D_D3D12_SkipLibraryCopy>false</Microsoft_Direct3D_D3D12_SkipLibraryCopy>
+    <Microsoft_Direct3D_D3D12_SkipDebugLayerCopy>false</Microsoft_Direct3D_D3D12_SkipDebugLayerCopy>
+    <Microsoft_Direct3D_D3D12_SkipIncludeDir>false</Microsoft_Direct3D_D3D12_SkipIncludeDir>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Ship|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">
+    <PlatformToolset>Clang</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">
+    <PlatformToolset>Clang</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">
+    <PlatformToolset>Clang</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\EngineSourceProperties.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\EngineSourceProperties.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\EngineSourceProperties.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">
+    <Import Project="..\EngineSourceProperties.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">
+    <Import Project="..\EngineSourceProperties.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">
+    <Import Project="..\EngineSourceProperties.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\GameApp\</OutDir>
+    <IntDir>$(SolutionDir)intermediate\$(Configuration)-$(Platform)\GameApp\</IntDir>
+    <TargetName>GameApp</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\GameApp\</OutDir>
+    <IntDir>$(SolutionDir)intermediate\$(Configuration)-$(Platform)\GameApp\</IntDir>
+    <TargetName>GameApp</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\$(Configuration)-$(Platform)\GameApp\</OutDir>
+    <IntDir>$(SolutionDir)intermediate\$(Configuration)-$(Platform)\GameApp\</IntDir>
+    <TargetName>GameApp</TargetName>
+    <TargetExt>.exe</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">
+    <OutDir>$(ProjectDir)..\bin\Debug-playstation-Prospero\GameApp\</OutDir>
+    <IntDir>$(ProjectDir)..\intermediate\Debug-playstation-Prospero\GameApp\</IntDir>
+    <UndefinedBehavior>Recover</UndefinedBehavior>
+    <AddressSanitizer>Recover</AddressSanitizer>
+    <LibraryPath>
+    </LibraryPath>
+    <SourcePath>
+    </SourcePath>
+    <IncludePath>$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">
+    <OutDir>$(ProjectDir)..\bin\Release-playstation-Prospero\GameApp\</OutDir>
+    <IntDir>$(ProjectDir)..\intermediate\Release-playstation-Prospero\GameApp\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">
+    <OutDir>..\bin\Ship-playstation-Prospero\GameApp\</OutDir>
+    <IntDir>..\intermediate\Ship-playstation-Prospero\GameApp\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>SKTBD_PLATFORM_WINDOWS;SKTBD_API_D3D12;SKTBD_DEBUG;_DEBUG;JPH_ENABLE_ASSERTS;JPH_FLOATING_POINT_EXCEPTIONS_ENABLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SKTBD_ENGINE_INCLUDES);$(MODULE_EXTENSION_INCLUDES);$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <FxCompile>
+      <ShaderModel>6.5</ShaderModel>
+    </FxCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <DelayLoadDLLs>d3d12.dll</DelayLoadDLLs>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST $(ProjectDir)assets\ (xcopy /Q /E /Y /I $(ProjectDir)assets $(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\assets &gt; nul) ELSE (xcopy /Q /Y /I $(ProjectDir)assets $(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\assets &gt; nul)
+xcopy /Q /Y /I $(SKTBD_ENGINE_DIR)\Skateboard\vendor\Platform\Windows\DirectX12\D3DWarp\bin\x64 $(OutDir)</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>SKTBD_PLATFORM_WINDOWS;SKTBD_API_D3D12;SKTBD_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SKTBD_ENGINE_INCLUDES);$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <FxCompile>
+      <ShaderModel>6.5</ShaderModel>
+    </FxCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <DelayLoadDLLs>d3d12.dll</DelayLoadDLLs>
+    </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST "$(ProjectDir)assets\" (xcopy /Q /E /Y /I "$(ProjectDir)assets" "$(OutDir)assets" &gt; nul) ELSE (xcopy /Q /Y /I "$(ProjectDir)assets" "$(OutDir)assets" &gt; nul)
+xcopy /Q /Y /I "$(SKTBD_ENGINE_DIR)\Skateboard\vendor\Platform\Windows\DirectX12\D3DWarp\bin\x64" "$(OutDir)"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Ship|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>SKTBD_PLATFORM_WINDOWS;SKTBD_API_D3D12SKTBD_SHIP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\skateboard_engine_208\Skateboard\vendor\spdlog\include;$(ProjectDir)..\..\skateboard_engine_208\Skateboard\src;$(ProjectDir)..\..\skateboard_engine_208\Skateboard\vendor;$(ProjectDir)..\..\skateboard_engine_208\Skateboard\vendor\entt\include;$(ProjectDir)..\..\skateboard_engine_208\Skateboard\vendor\glm;$(ProjectDir)..\..\skateboard_engine_208\Skateboard\vendor\Box2d\include;$(ProjectDir)..\..\skateboard_engine_208\Skateboard\vendor\Jolt\;$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <ExternalWarningLevel>Level3</ExternalWarningLevel>
+    </ClCompile>
+    <FxCompile>
+      <ShaderModel>6.5</ShaderModel>
+    </FxCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <DelayLoadDLLs>d3d12.dll</DelayLoadDLLs>
+    </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST $(ProjectDir)assets\ (xcopy /Q /E /Y /I $(ProjectDir)assets $(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\assets &gt; nul) ELSE (xcopy /Q /Y /I $(ProjectDir)assets $(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\assets &gt; nul)
+xcopy /Q /Y /I $(SKTBD_ENGINE_DIR)\Skateboard\vendor\Platform\Windows\DirectX12\D3DWarp\bin\x64 $(OutDir)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Prospero'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\skateboard_engine_208\Skateboard\vendor\spdlog\include;$(ProjectDir)..\..\skateboard_engine_208\Skateboard\src;$(ProjectDir)..\..\skateboard_engine_208\Skateboard\vendor;$(ProjectDir)..\..\skateboard_engine_208\Skateboard\vendor\entt\include;$(ProjectDir)..\..\skateboard_engine_208\Skateboard\vendor\glm;$(ProjectDir)..\..\skateboard_engine_208\Skateboard\vendor\Box2d\include;$(ProjectDir)..\..\skateboard_engine_208\Skateboard\vendor\Jolt\;$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SKTBD_PLATFORM_PLAYSTATION;SKTBD_DEBUG; _DEBUG;JPH_PLATFORM_BLUE;JPH_ENABLE_ASSERTS;JPH_FLOATING_POINT_EXCEPTIONS_ENABLED;</PreprocessorDefinitions>
+      <CppLanguageStd>Cpp20</CppLanguageStd>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProcessorNumber>$(NUMBER_OF_PROCESSORS)</ProcessorNumber>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>-lSceAgcDriver_stub_weak;-lSceAgc_stub_weak;-lSceVideoOut_stub_weak;-lSceAgc_debug_nosubmission;-lSceAgcCore_debug_nosubmission;-lSceAgcGpuAddress_debug_nosubmission;-lSceMat_nosubmission_stub_weak;libScePackParser.a;libedgeanimtool.a</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\skateboard_engine_208\Skateboard\src\Platform\Playstation\model-loading\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y /I "$(SCE_PROSPERO_SDK_DIR)\target\sce_module\libc.prx" "$(OutDir)sce_module\"
+IF EXIST $(ProjectDir)assets\ (xcopy /Q /E /Y /I $(ProjectDir)assets $(OutDir)assets &gt; nul) ELSE (xcopy /Q /Y /I $(ProjectDir)assets $(OutDir)assets &gt; nul)
+ 
+$(SKTBD_ENGINE_DIR)/batch/ConvertTexturesToGnf.cmd "$(SCE_PROSPERO_SDK_DIR)" $(OutDir)..\ $(OutDir)</Command>
+    </PostBuildEvent>
+    <PostAnalyzeEvent>
+      <Message>Copying libc.prx</Message>
+    </PostAnalyzeEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Prospero'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\skateboard_engine_208\Skateboard\vendor\spdlog\include;$(ProjectDir)..\..\skateboard_engine_208\Skateboard\src;$(ProjectDir)..\..\skateboard_engine_208\Skateboard\vendor;$(ProjectDir)..\..\skateboard_engine_208\Skateboard\vendor\entt\include;$(ProjectDir)..\..\skateboard_engine_208\Skateboard\vendor\glm;$(ProjectDir)..\..\skateboard_engine_208\Skateboard\vendor\Box2d\include;$(ProjectDir)..\..\skateboard_engine_208\Skateboard\vendor\Jolt\;$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SKTBD_PLATFORM_PLAYSTATION;SKTBD_RELEASE;JPH_PLATFORM_BLUE;</PreprocessorDefinitions>
+      <CppLanguageStd>Cpp17</CppLanguageStd>
+      <ProcessorNumber>$(NUMBER_OF_PROCESSORS)</ProcessorNumber>
+      <OptimizationLevel>Level2</OptimizationLevel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>-lSceAgcDriver_stub_weak;-lSceAgc_stub_weak;-lSceVideoOut_stub_weak;-lSceAgc_debug_nosubmission;-lSceAgcCore_debug_nosubmission;-lSceAgcGpuAddress_debug_nosubmission;-lSceMat_nosubmission_stub_weak;libScePackParser.a;libedgeanimtool.a</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\skateboard_engine_208\Skateboard\src\Platform\Playstation\model-loading\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y /I "$(SCE_PROSPERO_SDK_DIR)\target\sce_module\libc.prx" "$(OutDir)sce_module\"
+IF EXIST $(ProjectDir)assets\ (xcopy /Q /E /Y /I $(ProjectDir)assets $(OutDir)assets &gt; nul) ELSE (xcopy /Q /Y /I $(ProjectDir)assets $(OutDir)assets &gt; nul)
+ConvertTexturesToGnf.cmd "$(SCE_PROSPERO_SDK_DIR)" $(OutDir)..\ $(OutDir)</Command>
+    </PostBuildEvent>
+    <PostAnalyzeEvent>
+      <Message>Copying libc.prx</Message>
+    </PostAnalyzeEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Ship|Prospero'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\Skateboard\vendor\spdlog\include;..\Skateboard\src;..\Skateboard\vendor;..\Skateboard\vendor\entt\include;..\Skateboard\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SKTBD_PLATFORM_PLAYSTATION;SKTBD_SHIP;</PreprocessorDefinitions>
+      <CppLanguageStd>Cpp17</CppLanguageStd>
+      <ProcessorNumber>$(NUMBER_OF_PROCESSORS)</ProcessorNumber>
+      <OptimizationLevel>Level2</OptimizationLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>-lSceAgcDriver_stub_weak;-lSceAgc_stub_weak;-lSceVideoOut_stub_weak;-lSceAgc;-lSceAgcCore;-lSceAgcGpuAddress</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y /I "$(SCE_PROSPERO_SDK_DIR)\target\sce_module\libc.prx" "$(LocalDebuggerWorkingDirectory)\sce_module\"
+IF EXIST $(ProjectDir)assets\ (xcopy /Q /E /Y /I $(ProjectDir)assets $(LocalDebuggerWorkingDirectory)\assets &gt; nul) ELSE (xcopy /Q /Y /I $(ProjectDir)assets $(LocalDebuggerWorkingDirectory)\assets &gt; nul)
+ConvertTexturesToGnf.cmd "$(SCE_PROSPERO_SDK_DIR)" $(SolutionDir) $(OutDir)</Command>
+    </PostBuildEvent>
+    <PostAnalyzeEvent>
+      <Message>Copying libc.prx</Message>
+    </PostAnalyzeEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="src\CamObj.h" />
+    <ClInclude Include="src\MainScene.h" />
+    <ClInclude Include="src\DefaultGameLayer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\CamObj.cpp" />
+    <ClCompile Include="src\GameApp.cpp" />
+    <ClCompile Include="src\MainScene.cpp" />
+    <ClCompile Include="src\DefaultGameLayer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\skateboard_engine\Skateboard\Skateboard.vcxproj">
+      <Project>{c54b388e-b103-7adb-1a0b-533706e214cc}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\skateboard_engine\Skateboard\vendor\Box2D\Box2D.vcxproj">
+      <Project>{f97f5bb5-578e-4e0b-b0b0-6e98555baac1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\skateboard_engine\Skateboard\vendor\Jolt\Jolt.vcxproj">
+      <Project>{6a3a7aed-8edf-4960-bcda-d367bdcb4390}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\skateboard_ext\CMP203\ExtensionProject\ExtensionProject.vcxproj">
+      <Project>{610e2905-8d7c-4761-b739-be65dbce9d5c}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\WinPixEventRuntime.1.0.240308001\build\WinPixEventRuntime.targets" Condition="Exists('..\packages\WinPixEventRuntime.1.0.240308001\build\WinPixEventRuntime.targets')" />
+    <Import Project="..\packages\Microsoft.Direct3D.D3D12.1.614.1\build\native\Microsoft.Direct3D.D3D12.targets" Condition="Exists('..\packages\Microsoft.Direct3D.D3D12.1.614.1\build\native\Microsoft.Direct3D.D3D12.targets')" />
+  </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\WinPixEventRuntime.1.0.240308001\build\WinPixEventRuntime.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\WinPixEventRuntime.1.0.240308001\build\WinPixEventRuntime.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Direct3D.D3D12.1.614.1\build\native\Microsoft.Direct3D.D3D12.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Direct3D.D3D12.1.614.1\build\native\Microsoft.Direct3D.D3D12.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Direct3D.D3D12.1.614.1\build\native\Microsoft.Direct3D.D3D12.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Direct3D.D3D12.1.614.1\build\native\Microsoft.Direct3D.D3D12.targets'))" />
+  </Target>
+</Project>
